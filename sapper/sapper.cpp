@@ -2,8 +2,7 @@
 #include "SapperEngine.h"
 #include "random.h"
 
-#define DEBUG true
-
+#define DEBUG false
 int main(){
     const unsigned int sizex = 10, sizey = 10, mines = 5;
     int** field = nullptr;

@@ -16,7 +16,7 @@ void ShowList(char** list, const int sizex, const int sizey) {
         std::cout << std::endl;
     }
 }
-int** CreateList(const int sizex, const int sizey) { //int CreateList(int **&list, const int sizex, const int sizey)
+int** CreateList(const int sizex, const int sizey) {
     int** list = new int* [sizey];
 
     for (int i = 0; i < sizey; ++i) {
@@ -101,7 +101,6 @@ void OpenSq(int** field, char**& maskfield, const int x, const int y, const int 
         maskfield[y][x] = listnum[field[y][x]];
     }
 }
-
 void EngGame(char**& maskfield, int** field, const int sizex, const int sizey) {
     bool game = true;
     int x, y;
@@ -109,7 +108,7 @@ void EngGame(char**& maskfield, int** field, const int sizex, const int sizey) {
         std::cout << "Enter the coordinats: ";
         std::cin >> y >> x;
         if (x <= 0 || y <= 0) {
-            std::cout << "uncorrect input"<<std::endl;
+            std::cout << "Incorrect input."<<std::endl;
             continue;
         }
         OpenSq(field, maskfield, x - 1, y - 1, sizex, sizey);
