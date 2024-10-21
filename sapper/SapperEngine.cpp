@@ -79,31 +79,41 @@ bool CheckRule(int** field, const int x, const int y) {
         return true;
     }
 }
-void OpenSq(int** field, char**& maskfield, const int x, const int y) {
+void OpenSq(int** field, char**& maskfield, const int x, const int y, const int sizex, const int sizey) {
     char listnum[] = { '0', '1', '2', '3','4','5','6','7','8','9' };
-    if (field[y][x] == 0) {
-        float pi = 3.14;
-        int r = 3;
-        for (int i = -r; i <= r; i++) {
-            for (int j = -r; j <= r; j++) {
-
-            }
-        }
-    }
     if (field[y][x] == -1) {
         maskfield[y][x] = '*';
         return;
     }
-    maskfield[y][x] = listnum[field[y][x]];
+
+    if (field[y][x] == 0) {
+        int r = 3;
+        for (int i = -r; i <= r; i++) {
+            for (int j = -r; j <= r; j++) {
+                if ((y + i) >= 0 && (y + i) < sizey && (x + j) >= 0 && (x + j) < sizex && field[y + i][x + j] != -1) {
+                    maskfield[y + i][x + j] = listnum[field[y + i][x + j]];
+                }
+            }
+        }
+        return;
+    }
+    else {
+        maskfield[y][x] = listnum[field[y][x]];
+    }
 }
-void EngGame(char**& maskfield, int** field, const int j, const int i) {
+
+void EngGame(char**& maskfield, int** field, const int sizex, const int sizey) {
     bool game = true;
     int x, y;
     while (game) {
         std::cout << "Enter the coordinats: ";
         std::cin >> y >> x;
-        OpenSq(field, maskfield, x - 1, y - 1);
-        ShowList(maskfield, j, i);
+        if (x <= 0 || y <= 0) {
+            std::cout << "uncorrect input"<<std::endl;
+            continue;
+        }
+        OpenSq(field, maskfield, x - 1, y - 1, sizex, sizey);
+        ShowList(maskfield, sizex, sizey);
         game = CheckRule(field, x - 1, y - 1);
     }
 }

@@ -5,7 +5,7 @@
 #define DEBUG true
 
 int main(){
-    const unsigned int sizex = 5, sizey = 5, mines = 5;
+    const unsigned int sizex = 10, sizey = 10, mines = 5;
     int** field = nullptr;
     char** maskfield=nullptr;
     field = CreateList(sizex, sizey);
