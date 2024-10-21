@@ -83,8 +83,12 @@ void OpenSq(int** field, char**& maskfield, const int x, const int y) {
     char listnum[] = { '0', '1', '2', '3','4','5','6','7','8','9' };
     if (field[y][x] == 0) {
         float pi = 3.14;
-        int t = 3;
+        int r = 3;
+        for (int i = -r; i <= r; i++) {
+            for (int j = -r; j <= r; j++) {
 
+            }
+        }
     }
     if (field[y][x] == -1) {
         maskfield[y][x] = '*';
